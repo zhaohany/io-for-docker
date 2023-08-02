@@ -18,6 +18,7 @@ To build the **io-for-docker** image, follow these steps:
 ```bash
 git clone https://github.com/your-username/io-for-docker.git
 cd io-for-docker
+mkdir hostmount
 ```
 
 2. Build the Docker image:
