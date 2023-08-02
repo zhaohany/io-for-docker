@@ -1,42 +1,62 @@
-# io-for-docker
-A Open Source Docker Image for IO Benchmark Testing
+Sure! To log into the container's bash for debugging purposes, you can use the `docker exec` command. Add the following steps to the debugging section:
 
-## Edit the jobfile
-Reference: https://fio.readthedocs.io/en/latest/index.html
+## Debugging
 
+In case you encounter any issues during the benchmark testing, you can log into the container's bash to view the standard output and inspect the container environment.
 
-## Build docker image
-Reference: https://docs.docker.com/engine/reference/commandline/build/
+To access the container's bash, follow these steps:
+
+1. First, find the container ID or name by running the following command to list all running containers:
+
 ```bash
-cd io-for-docker
-docker build -t io-for-docker .
+docker ps
 ```
-## Run the Benchmark Test
-runq runtime
+
+2. Locate the container ID or name associated with the **io-for-docker** image.
+
+3. Use the `docker exec` command to log into the container's bash:
+
 ```bash
-docker run --runtime=runq -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+docker exec -it CONTAINER_ID_OR_NAME /bin/bash
 ```
-runc runtime
+
+Replace `CONTAINER_ID_OR_NAME` with the actual container ID or name from the previous step.
+
+You will now have access to the container's bash prompt, where you can inspect the logs, files, and run commands to diagnose and troubleshoot any issues.
+
+Remember to exit the container's bash when you have finished debugging:
+
 ```bash
-docker run --runtime=runc -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+exit
 ```
-## Debug
 
+## View the Results
 
-## View the result
+After the benchmark test is complete, detailed results from FIO will be printed out to the console. Analyze the results to understand the performance of the IO operations.
 
+## Clean Up Space
 
-## Clean up space
+To clean up space and remove the contents of the "hostmount" directory, use the following command:
 ```bash
 rm -r ./hostmount/*
 ```
 
-```diff
-- Be Careful, this might remove your other project!
-```
+**Note:** Be cautious while using this command, as it will remove all files and directories in the "hostmount" directory. Ensure you have taken appropriate precautions to avoid unintended data loss.
+
+Additionally, you can prune unused Docker data to free up disk space:
 ```bash
 docker system prune --volumes
 ```
 
 ## Known Issues
-fio unable to open "jobfile.fio" jobfile
+
+There is a known issue with FIO being unable to open the "jobfile.fio" jobfile. The **io-for-docker** repository is actively working to address this issue, and updates will be provided as they become available.
+
+## Next Steps
+
+The **io-for-docker** project is continuously improving, and the following features are planned for future releases:
+
+- Result Export: Enhance the tool to allow users to export benchmark results in different formats for further analysis and comparison.
+- Result Visualization: Develop a visualization component to present benchmark results in a more intuitive and accessible manner.
+
+We welcome contributions from the community to help achieve these goals and make **io-for-docker** an even more powerful and useful tool for IO benchmark testing in Docker environments. Please feel free to provide feedback, report issues, or contribute to the project! Happy benchmarking!
