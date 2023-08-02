@@ -1,4 +1,43 @@
-Sure! To log into the container's bash for debugging purposes, you can use the `docker exec` command. Add the following steps to the debugging section:
+# io-for-docker - An Open Source Docker Image for IO Benchmark Testing
+
+## Overview
+
+**io-for-docker** is an open-source Docker image designed for IO benchmark testing using [FIO](https://fio.readthedocs.io/en/latest/index.html), a flexible I/O tester and benchmark tool. The image supports both **runq** and **runc** Docker runtime environments and allows for sequential read, sequential write, random read, and random write IO testing.
+
+## Usage
+
+### 1. Edit the Jobfile
+
+Before running the benchmark test, you need to customize the FIO jobfile according to your specific requirements. The jobfile defines the parameters and characteristics of the IO operations to be tested.
+
+### 2. Build the Docker Image
+
+To build the **io-for-docker** image, follow these steps:
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/io-for-docker.git
+cd io-for-docker
+```
+
+2. Build the Docker image:
+```bash
+docker build -t io-for-docker .
+```
+
+### 3. Run the Benchmark Test
+
+To perform the IO benchmark testing with **io-for-docker** in the desired Docker runtime, use one of the following commands:
+
+**Using runq runtime:**
+```bash
+docker run --runtime=runq -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+```
+
+**Using runc runtime:**
+```bash
+docker run --runtime=runc -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+```
 
 ## Debugging
 
