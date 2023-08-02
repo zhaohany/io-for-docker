@@ -2,7 +2,7 @@
 
 ## Overview
 
-**io-for-docker** is an open-source Docker image designed for IO benchmark testing using [FIO](https://fio.readthedocs.io/en/latest/index.html), a flexible I/O tester and benchmark tool. The image supports both **runq** and **runc** Docker runtime environments and allows for sequential read, sequential write, random read, and random write IO testing.
+**io-for-docker** is an open-source Docker image designed for IO benchmark testing using [FIO](https://fio.readthedocs.io/en/latest/index.html), a flexible I/O tester and benchmark tool. The image supports both **runq** and **runc** Docker runtime environments(And any runtime support docker) and allows for sequential read, sequential write, random read, and random write IO testing.
 
 ## Usage
 
