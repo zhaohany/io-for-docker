@@ -14,8 +14,7 @@ docker build -t io-for-docker .
 ## Run the Benchmark Test
 
 ```bash
-docker run --runtime=runq --rm io-for-docker \
---mount source=$PWD/host_mount,target=/vm_mount
+docker run --runtime=runq --rm io-for-docker --mount source=$PWD/host_mount,target=/vm_mount
 ```
 
 ## View the result
