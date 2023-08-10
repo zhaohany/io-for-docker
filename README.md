@@ -32,12 +32,12 @@ To perform the IO benchmark testing with **io-for-docker** in the desired Docker
 
 **Using runq runtime:**
 ```bash
-docker run --runtime=runq -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+docker run --runtime=runq -e RUNQ_MEM=256 -e RUNQ_CPU=1 -v $(pwd)/hostmount:/vmmount --rm io-for-docker
 ```
 
 **Using runc runtime:**
 ```bash
-docker run --runtime=runc -v $(pwd)/hostmount:/vmmount --rm io-for-docker
+docker run --runtime=runc --cpus="1.0" --memory="256m" -v $(pwd)/hostmount:/vmmount --rm io-for-docker
 ```
 
 ## Debugging
